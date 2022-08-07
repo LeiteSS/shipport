@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+</head>
+<body>
+<h2>Cadastrar conteiner</h2>
+<main>
+    <form action="#" th:action="@{/atualizar}" th:object="${conteiner}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{movimentacao.id}"/>
+
+        <input type="text" th:field="*{cliente}">
+        <input type="text" th:field="*{numero}">
+        <select th:field="*{tipo}">
+            <option value="20">20</option>
+            <option value="40">40</option>
+        </select>
+        <select th:field="*{categoria}">
+            <option value="IMPORTACAO">Importacao</option>
+            <option value="EXPORTACAO">Exportacao</option>
+        </select>
+        <select th:field="*{status}">
+            <option value="CHEIO">Cheio</option>
+            <option value="VAZIO">Vazio</option>
+        </select>
+        <select th:field="*{movimentacao.tipo}">
+            <option value="EMBARQUE">Embarque</option>
+            <option value="DESCARGA">Descarga</option>
+            <option value="GATE_IN">Gate In</option>
+            <option value="GATE_OUT">Gate Out</option>
+            <option value="REPOSICIONAMENTO">Reposicionamento</option>
+            <option value="PESAGEM">Pesagem</option>
+            <option value="SCANNER">Scanner</option>
+        </select>
+        <input type="datetime-local" th:field="*{movimentacao.inicio}">
+        <input type="datetime-local" th:field="*{movimentacao.fim}">
+
+        <button type="submit">Atualizar</button>
+    </form>
+    <a th:href="@{/}">Voltar para a pagina principal</a>
+</main>
+</body>
+</html>

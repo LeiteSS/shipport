@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina Principal</title>
+</head>
+<body>
+    <a th:href="@{/cadastro}">Cadastrar</a>
+
+    <form th:action="@{/}">
+        <input type="text" th:value="${palavraChave}">
+        <button type="submit">Pesquisa</button>
+    </form>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <td>Numero do conteiner</td>
+                    <td>Cliente</td>
+                    <td>Tipo de Movimentacao</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${lista}">
+                    <td th:text="${item.numero}"></td>
+                    <td th:text="${item.cliente}"></td>
+                    <td th:text="${item.movimentacao.tipo}"></td>
+                    <td>
+                        <a th:href="@{/atualiza/{id}(id=${item.id})}">Atualizar</a>
+                        <a th:href="@{/deleta/{id}(id=${item.id})}">Deletar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Sumario</h2>
+        <h2>Total Exportacao:</h2>
+        <p th:text="${exportacao}"></p>
+        <h2>Total Importacao:</h2>
+        <p th:text="${importacao}"></p>
+        <hr>
+        <h2>Total Movimentacoes:</h2>
+        <p th:text="${movimentacao}"></p>
+    </main>
+</body>
+</html>
